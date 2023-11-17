@@ -18,14 +18,18 @@ class IndexView(generic.ListView):
     #     return Remedy.objects.select_related().all().order_by("name")
 
 
-class RemedyView(LoginRequiredMixin, generic.DetailView):
+class RemedyEdit(LoginRequiredMixin, generic.DetailView):
     login_url = '/admin/login/'
     model = Remedy
     template_name = "homeo/remedy.html"
 
 
-class MateriaView(LoginRequiredMixin, generic.DetailView):
-    login_url = '/admin/login/'
+class RemedyView(generic.DetailView):
+    model = Remedy
+    template_name = "homeo/remedy.html"
+
+
+class MateriaView(generic.DetailView):
     model = MateriaMedica
     template_name = "homeo/materia.html"
 
