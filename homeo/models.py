@@ -7,8 +7,6 @@ from django.utils import timezone
 
 class Remedy(models.Model):
     name = models.CharField(max_length=50)
-    created = models.DateTimeField("date created")
-    updated = models.DateTimeField("date last updated")
 
     def __str__(self):
         return self.name
