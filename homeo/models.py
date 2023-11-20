@@ -30,12 +30,12 @@ class Remedy(models.Model):
         return self.name
 
 
-class RemedyPotency(models.Model):
-    remedy = models.ForeignKey(Remedy, on_delete=models.CASCADE)
-    potency = models.ManyToManyField(Potency)
-
-    def __str__(self):
-        return self.remedy + " (" + self.potency + ")"
+# class RemedyPotency(models.Model):
+#     remedy = models.ForeignKey(Remedy, on_delete=models.CASCADE)
+#     potency = models.ManyToManyField(Potency)
+#
+#     def __str__(self):
+#         return self.remedy + " (" + self.potency + ")"
 
 
 class RemedyMateriaMedica(models.Model):

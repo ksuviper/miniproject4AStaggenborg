@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Remedy, RemedyPotency, RemedyMateriaMedica, Potency, MateriaMedica
+from .models import Remedy, RemedyMateriaMedica, Potency, MateriaMedica
 
 # Register your models here.
 admin.site.register(Remedy)

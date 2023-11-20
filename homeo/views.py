@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 
-from .models import Remedy, RemedyPotency, RemedyMateriaMedica, Potency, MateriaMedica
+from .models import Remedy, RemedyMateriaMedica, Potency, MateriaMedica
 
 
 class IndexView(generic.ListView):
@@ -20,12 +20,12 @@ class IndexView(generic.ListView):
 
 class RemedyEdit(LoginRequiredMixin, generic.DetailView):
     login_url = '/admin/login/'
-    model = RemedyPotency
+    model = Remedy
     template_name = "homeo/remedy.html"
 
 
 class RemedyView(generic.DetailView):
-    model = RemedyPotency
+    model = Remedy
     template_name = "homeo/remedy.html"
 
 
