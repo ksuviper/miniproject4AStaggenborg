@@ -13,24 +13,24 @@ class IndexView(generic.ListView):
     template_name = "homeo/index.html"
     context_object_name = "remedy_list"
 
-    # def get_queryset(self):
-    #     """Return the list of remedies"""
-    #     return Remedy.objects.select_related().all().order_by("name")
+    def get_queryset(self):
+        """Return the list of remedies"""
+        return Remedy.objects.select_related().all()
 
 
 class RemedyEdit(LoginRequiredMixin, generic.DetailView):
     login_url = '/admin/login/'
-    model = Remedy
+    model = RemedyPotency
     template_name = "homeo/remedy.html"
 
 
 class RemedyView(generic.DetailView):
-    model = Remedy
+    model = RemedyPotency
     template_name = "homeo/remedy.html"
 
 
 class MateriaView(generic.DetailView):
-    model = MateriaMedica
+    model = RemedyMateriaMedica
     template_name = "homeo/materia.html"
 
 
