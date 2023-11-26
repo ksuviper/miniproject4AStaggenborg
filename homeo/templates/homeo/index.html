@@ -22,8 +22,8 @@
     <tbody>
     {% for r in remedy_list %}
       <tr scope="row">
-        <td>{{ r.remedy.name }} {{ r.potency.potency }}</td>
-        <td><a href="{{ remedy.link }}" target="_blank">{{ remedy.link }}</a></td>
+        <td>{{ r.name }} {{ r.potency.availablePotency }}</td>
+        <td><a href="{{ r.materiaMedica.link }}" target="_blank">{{ r.materiaMedica.description }}</a></td>
         {% if g.user %}
         <td><a class="btn btn-info" href="">Edit</a></td>
         {% endif %}

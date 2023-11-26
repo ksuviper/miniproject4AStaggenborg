@@ -5,29 +5,37 @@ from django.contrib import admin
 from django.utils import timezone
 
 
-class Potency(models.Model):
-    potency = models.CharField(max_length=5)
+class Remedy(models.Model):
+    name = models.CharField(max_length=50)
+    lastUpdated = models.DateTimeField(default=datetime.datetime.now())
 
     def __str__(self):
-        return self.potency
+        return self.name
+
+
+class PotencyList(models.Model):
+    availablePotency = models.CharField(max_length=5)
+
+    def __str__(self):
+        return self.availablePotency
+
+
+class Potency(models.Model):
+    remedy = models.ForeignKey(Remedy, on_delete=models.CASCADE)
+    potency = models.ForeignKey(PotencyList, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.remedy.name + " " + self.potency.availablePotency
 
 
 class MateriaMedica(models.Model):
+    remedy = models.ForeignKey(Remedy, on_delete=models.CASCADE)
     link = models.URLField()
     data = models.TextField()
     description = models.CharField(max_length=100, default="")
 
     def __str__(self):
-        return self.link
-
-
-class Remedy(models.Model):
-    name = models.CharField(max_length=50)
-    potency = models.ManyToManyField(Potency)
-    materiaMedia = models.ManyToManyField(MateriaMedica)
-
-    def __str__(self):
-        return self.name
+        return self.description
 
 
 # class RemedyPotency(models.Model):
@@ -38,12 +46,12 @@ class Remedy(models.Model):
 #         return self.remedy + " (" + self.potency + ")"
 
 
-class RemedyMateriaMedica(models.Model):
-    remedy = models.ForeignKey(Remedy, on_delete=models.CASCADE)
-    materiaMedica = models.ForeignKey(MateriaMedica, on_delete=models.RESTRICT)
-    description = models.CharField(max_length=100, default="")
-
-    def __str__(self):
-        return self.materiaMedica
+# class RemedyMateriaMedica(models.Model):
+#     remedy = models.ForeignKey(Remedy, on_delete=models.CASCADE)
+#     materiaMedica = models.ForeignKey(MateriaMedica, on_delete=models.RESTRICT)
+#     description = models.CharField(max_length=100, default="")
+#
+#     def __str__(self):
+#         return self.materiaMedica
 
 

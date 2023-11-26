@@ -5,16 +5,16 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 
-from .models import Remedy, RemedyMateriaMedica, Potency, MateriaMedica
+from .models import Remedy, Potency, MateriaMedica
 
 
 class IndexView(generic.ListView):
-    model = Remedy
+    model = Remedy.objects.select_related().all()
     template_name = "homeo/index.html"
     context_object_name = "remedy_list"
 
     def get_queryset(self):
-        """Return the list of remedies"""
+        # """Return the list of remedies"""
         return Remedy.objects.select_related().all()
 
 
@@ -30,7 +30,7 @@ class RemedyView(generic.DetailView):
 
 
 class MateriaView(generic.DetailView):
-    model = RemedyMateriaMedica
+    model = MateriaMedica
     template_name = "homeo/materia.html"
 
 
