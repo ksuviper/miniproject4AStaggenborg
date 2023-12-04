@@ -20,7 +20,7 @@
             <li><a href="{% url 'signup' %}" class="btn btn-outline-light me-1" role="button">Register</a></li>
             <li><a href="{% url 'login' %}?next={{ request.path }}" class="btn btn-outline-light me-1" role="button">Log In</a></li>
         {% endif %}
-          <li><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#aboutModal"><img src="{% static 'homeo/images/info-24px.png' %}"></button></li>
+          <li><button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#aboutModal"><img src="{% static 'homeo/images/info-24px.png' %}"></button></li>
       </ul>
     </nav>
     <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
