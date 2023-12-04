@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <div class="row mb-2">
+      <label class="col-sm-1 col-form-label" for="username">{{ form.username.label_tag }}</label>
+      <div class="col-sm-2">{{ form.username }}</div>
+    </div>
+    <div class="row mb-2">
+      <label class="col-sm-1 col-form-label" for="password">{{ form.password.label_tag }}</label>
+    <div class="col-sm-2">{{ form.password }}</div>
+    </div>
+    <button class="btn btn-primary" type="submit" value="login">Log In</button><a class="btn btn-secondary" role="button" href="/homeo">Cancel</a>
+    <input type="hidden" name="next" value="{{ next }}">
+</form>
+
+{% endblock %}
