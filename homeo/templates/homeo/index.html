@@ -14,17 +14,17 @@
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr scope="row">
-          <th scope="col">Remedy</th>
-          <th scope="col">Available Potencies</th>
-          <th scope="col">Available Materia Medicas</th>
-          <th scope="col"></th>
+          <th scope="col" class="text-center">Remedy</th>
+          <th scope="col" class="text-center">Available Potencies</th>
+          <th scope="col" class="text-center">Available Materia Medicas</th>
+          <th scope="col" class="text-center"></th>
         </tr>
     </thead>
     <tbody>
     {% for r in remedy_list %}
       <tr scope="row">
-        <td>{{ r.name }}</td>
-        <td>
+        <td class="col">{{ r.name }}</td>
+        <td class="col">
             {% for i, p in r.potency.values_list %}
                 {% if not forloop.last %}
                     {{ p }},
@@ -35,8 +35,10 @@
                 {% endif %}
             {% endfor %}
         </td>
-        <td>{{ r.materiaMedica.count }} Available <a class="btn btn-info" href="{% url 'homeo:materia' r.id %}">View</a></td>
-        <td><a class="btn btn-info" href="{% url 'homeo:remedy' r.id %}">View Remedy</a></td>
+        <td class="col text-center">{{ r.materiaMedica.count }} Available
+{#            <a class="btn btn-info" href="{% url 'homeo:materia' r.id %}">View</a>#}
+        </td>
+        <td class="col text-center"><a class="btn btn-info" href="{% url 'homeo:remedy' r.id %}">View Remedy</a></td>
       </tr>
     {% endfor %}
     </tbody>
