@@ -1,11 +1,27 @@
 {% extends 'base.html' %}
 
 {% block header %}
-<h2>{% block title %} {% endblock %}</h2>
+    <h2>{% block title %} {{ remedy.name }} {% endblock %}</h2>
+    <h5>
+        {% for i, p in remedy.potency.values_list %}
+            {% if not forloop.last %}
+                {{ p }},
+            {% endif %}
+
+            {% if forloop.last %}
+                {{ p }}
+            {% endif %}
+        {% endfor %}
+    </h5>
 {% endblock %}
 {% block content %}
-<form action="{% url 'polls:vote' question.id %}" method="post">
-{% csrf_token %}
-
-</form>
+    <div class="container">
+        <h4>Materia Medica List:</h4>
+        {% for id, link, data, desc in remedy.materiaMedica.values_list %}
+            <div class="row p-1">
+                <div class="col-auto">{{ desc }}</div>
+                <div class="col-auto"><a class="btn btn-info btn-sm" href="{% url "homeo:materia" id %}" target="_blank">View</a> <a class="btn btn-secondary btn-sm" href="{{ link }}" target="_blank">View (External)</a></div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

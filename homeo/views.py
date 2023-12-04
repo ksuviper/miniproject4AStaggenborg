@@ -17,12 +17,6 @@ class IndexView(generic.ListView):
         return Remedy.objects.select_related().all()
 
 
-class RemedyEdit(LoginRequiredMixin, generic.DetailView):
-    login_url = '/admin/login/'
-    model = Remedy
-    template_name = "homeo/remedy.html"
-
-
 class RemedyView(generic.DetailView):
     model = Remedy
     template_name = "homeo/remedy.html"
@@ -32,5 +26,14 @@ class MateriaView(generic.DetailView):
     model = MateriaMedica
     template_name = "homeo/materia.html"
 
+
+def remedy(request, remedy_id):
+    r = get_object_or_404(Remedy, pk=remedy_id)
+    return render(request, "homeo/remedy.html", {"remedy": r})
+
+
+def materia(request, materia_id):
+    m = get_object_or_404(MateriaMedica, pk=materia_id)
+    return render(request, "homeo/materia.html", {"materia": m})
 
 

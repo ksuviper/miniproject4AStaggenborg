@@ -10,17 +10,17 @@
 
 <body>
     <nav class="p-3 text-bg-dark">
-      <h1><a class="navbar-brand" href="/">Homeopathic Remedy Catalog</a></h1>
+      <h1><a class="navbar-brand" href="/homeo">Homeopathic Remedy Catalog</a></h1>
       <ul>
-        {% if g.user %}
-            <li><span>Welcome, </span></li>
-            <li><a href="" class="btn btn-outline-light me-2" role="button">Log Out</a></li>
+        {% if user.is_authenticated %}
+            <li><span class="text-nowrap">Welcome, {{ user.get_username }}</span></li>
+            <li><a href="{% url 'logout' %}?next={{ request.path }}" class="btn btn-outline-light me-1 text-nowrap" role="button">Log Out</a></li>
+            <li><a href="/admin" class="btn btn-warning me-1"><img src="{% static 'homeo/images/gear-24px.png' %}"></a></li>
         {% else %}
-            <li><a href="" class="btn btn-outline-light me-2" role="button">Register</a></li>
-            <li><a href="" class="btn btn-outline-light me-2" role="button">Log In</a></li>
-
+            <li><a href="{% url 'signup' %}" class="btn btn-outline-light me-1" role="button">Register</a></li>
+            <li><a href="{% url 'login' %}?next={{ request.path }}" class="btn btn-outline-light me-1" role="button">Log In</a></li>
         {% endif %}
-      <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#aboutModal">About</button>
+          <li><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#aboutModal"><img src="{% static 'homeo/images/info-24px.png' %}"></button></li>
       </ul>
     </nav>
     <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

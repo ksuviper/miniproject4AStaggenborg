@@ -36,13 +36,7 @@
             {% endfor %}
         </td>
         <td>{{ r.materiaMedica.count }} Available <a class="btn btn-info" href="{% url 'homeo:materia' r.id %}">View</a></td>
-        <td><a class="btn btn-info" href="{% url 'homeo:remedy' r.id %}">View</a>
-            {% if g.user %}
-                <a class="btn btn-secondary" href="{% url 'homeo:edit_remedy' r.id %}">Edit</a>
-            {% else %}
-                <a class="btn btn-secondary disabled" href="">Edit</a>
-            {% endif %}
-        </td>
+        <td><a class="btn btn-info" href="{% url 'homeo:remedy' r.id %}">View Remedy</a></td>
       </tr>
     {% endfor %}
     </tbody>
