@@ -12,6 +12,10 @@ class IndexView(generic.ListView):
     template_name = "homeo/index.html"
     context_object_name = "remedy_list"
 
+    if request.method == "POST":
+        data = request.POST
+        q = data.get("query")
+
     def get_queryset(self):
         """Return the list of remedies"""
         return Remedy.objects.select_related().all()

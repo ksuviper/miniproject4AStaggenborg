@@ -2,13 +2,14 @@
 
 {% block header %}
 <h2>{% block title %}Available Remedies{% endblock %}</h2>
-    <form class="d-flex" role="search" method="post">
-      <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="query">
-      <button class="btn btn-outline-success" type="submit">Search</button>
+    <form class="d-flex" role="search" method="get">
+        {% csrf_token %}
+        <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="query">
+        <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
-  {% if g.user %}
-  <a href="" class="btn btn-info" role="button">Add New</a>
-  {% endif %}
+{#  {% if g.user %}#}
+{#  <a href="" class="btn btn-info" role="button">Add New</a>#}
+{#  {% endif %}#}
 {% endblock %}
 {% block content %}
   <table class="table table-striped">
