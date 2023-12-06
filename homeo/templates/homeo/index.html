@@ -3,9 +3,11 @@
 {% block header %}
 <h2>{% block title %}Available Remedies{% endblock %}</h2>
     <form class="d-flex" role="search" method="get">
-        {% csrf_token %}
-        <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="query">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="query" value={{ query }}>
+        <button class="btn btn-outline-success me-1" type="submit">Search</button>
+        {% if query != "" %}
+            <a class="btn btn-outline-danger" role="button" href="/homeo">X</a>
+        {% endif %}
     </form>
 {#  {% if g.user %}#}
 {#  <a href="" class="btn btn-info" role="button">Add New</a>#}
@@ -39,7 +41,7 @@
         <td class="col text-center">{{ r.materiaMedica.count }} Available
 {#            <a class="btn btn-info" href="{% url 'homeo:materia' r.id %}">View</a>#}
         </td>
-        <td class="col text-center"><a class="btn btn-info" href="{% url 'homeo:remedy' r.id %}">View Remedy</a></td>
+        <td class="col text-center"><a class="btn btn-info btn-sm" href="{% url 'homeo:remedy' r.id %}">View Remedy</a></td>
       </tr>
     {% endfor %}
     </tbody>
