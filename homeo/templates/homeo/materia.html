@@ -4,8 +4,10 @@
     <h2>{% block title %}{{ materiamedica.description }} {% endblock %}</h2>
 {% endblock %}
 {% block content %}
-    External Link: <a href="{{ materiamedica.link }}" target="_blank">{{ materiamedica.link }}</a><br>
-    Viewer:<br>
-    <iframe srcdoc="{{ materiamedica.data }}" style="width: 924px; height: 600px; border: none; padding: 0; margin: 0;"></iframe>
+    <div class="container">
+        <div class="ext-link"> External Link: <a href="{{ materiamedica.link }}" target="_blank">{{ materiamedica.link }}</a></div>
+        <div>Viewer:</div>
+        <iframe srcdoc="{{ materiamedica.data }}" style="width: 900px; height: 600px; border: none; padding: 0; margin: 0;"></iframe>
+    </div>
 
 {% endblock %}
