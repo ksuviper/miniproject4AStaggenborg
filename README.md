@@ -27,7 +27,7 @@ python manage.py migrate
 
 Use the following command in a terminal window to start the web application:
 ```
-python manage.py startapp homeo
+python manage.py runserver
 ```
 You will be able to view the web application by browsing to http://127.0.0.1:8000
 
