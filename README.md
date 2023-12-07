@@ -21,8 +21,8 @@ pip install -r requirements.txt
 ## Usage
 Use the following command in a terminal window to initialize the database:
 ```
-python manage.py migrate
 python manage.py makemigrations homeo
+python manage.py migrate
 ```
 
 Use the following command in a terminal window to start the web application:
